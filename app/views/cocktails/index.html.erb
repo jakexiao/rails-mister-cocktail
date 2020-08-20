@@ -1,0 +1,12 @@
+<h1>Fancy Cocktails</h1>
+
+<%= form_tag(cocktails_path, :method => :get) do |f| %>
+    <%= text_field_tag :query %>
+    <%= submit_tag 'Search' %>
+<% end %>
+
+<% @cocktails.each do |cocktail|%>
+    <div> <%= link_to cocktail.name, cocktail_path(cocktail) %> <img src="<%= cocktail.image_url %>"> </div>
+<% end %>
+
+<%= link_to "Add a new cocktail", new_cocktail_path %>
