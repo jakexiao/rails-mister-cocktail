@@ -1,25 +1,7 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://secure.gravatar.com/avatar/9438fc5c5917d79d0e3c668eb6ad5dad" %>
-  <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <%= form_tag(cocktails_path, :method => :get) do |f| %>
-          <%= text_field_tag :query %>
-          <%= submit_tag 'Search', class:"btn btn-primary" %>
-        <% end %>
-      </li>
-      <li class="nav-item btn btn-secondary">
-        <%= link_to "Add new cocktail", new_cocktail_path%>
-      </li>
-    </ul>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/500x400/?cocktail);">
+  <div class="container">
+    <h1><strong>Be creative</strong> to <strong> reinvent your favourite cocktails</strong>!</h1>
+    <p>Change your night and social life by creating your own cocktail.</p>
   </div>
 </div>
 
