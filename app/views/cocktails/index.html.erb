@@ -1,16 +1,59 @@
-<h1>Fancy Cocktails</h1>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "#", class: "navbar-brand" do %>
+    <%= image_tag "https://secure.gravatar.com/avatar/9438fc5c5917d79d0e3c668eb6ad5dad" %>
+  <% end %>
 
-<%= form_tag(cocktails_path, :method => :get) do |f| %>
-    <%= text_field_tag :query %>
-    <%= submit_tag 'Search' %>
-<% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <%= form_tag(cocktails_path, :method => :get) do |f| %>
+          <%= text_field_tag :query %>
+          <%= submit_tag 'Search', class:"btn btn-primary" %>
+        <% end %>
+      </li>
+      <li class="nav-item btn btn-secondary">
+        <%= link_to "Add new cocktail", new_cocktail_path%>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+<div class="cards"> 
 <% @cocktails.each do |cocktail| %>
-    <div> 
-        <%= link_to cocktail.name, cocktail_path(cocktail) %>
-        <img src="<%= cocktail.image_url %>">
-        <%= cl_image_tag cocktail.photo.key, height: 300, width: 400, crop: :fill %>
-    </div>
-<% end %>
+    
+    <% if cocktail.photo.attached? %>
+    <% background_url = cl_image_path cocktail.photo.key, height: 300, width: 400, crop: :fill %>                                                                                                                                                             
+    <% else %>
+        <% background_url = cocktail.image_url %>
+    <% end %>
 
-<%= link_to "Add a new cocktail", new_cocktail_path %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= background_url %>')">
+    <%= link_to cocktail.name, cocktail_path(cocktail) %>
+    </div>
+
+
+<% end %>
+</div>
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This website is made with <i class="fas fa-heart"></i> by Jake Xiao
+  </div>
+</div>
+
+
+
